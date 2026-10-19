@@ -8,6 +8,7 @@ Tu joues un·e data scientist chez RecrutIA, chargé·e d'entraîner une IA qui 
 
 ## Lancer le jeu
 Ouvre `index.html` dans un navigateur. Aucune installation.
+Ou sinon, https://adsansgluten.github.io/lavigne-tp-web/
 
 ## Structure
 ```
