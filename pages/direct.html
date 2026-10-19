@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Un modèle très précis | Survie contre le Biais</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../theme.js"></script>
+</head>
+<body>
+  <main class="carte">
+    <header>
+      <button class="theme-bouton" type="button" aria-label="Passer en mode nuit">🌙</button>
+      <p class="etape">Étape 3 sur 9</p>
+      <h1>Un modèle très précis</h1>
+      <div class="progression" role="progressbar" aria-label="Progression" aria-valuenow="3" aria-valuemin="0" aria-valuemax="9"><span style="--v:33%"></span></div>
+      <img class="vignette" src="../assets/backgrounds/vignette-cvs.svg" alt="">
+    </header>
+    <section class="scene">
+      <p>L'entraînement est fini : <strong>91 % de précision</strong>. Tu es content.</p>
+      <p>Lina teste deux CV presque identiques, avec les mêmes diplômes et la même expérience :</p>
+      <div class="barres">
+        <div class="barre"><span>Thomas</span><span class="piste"><span class="jauge" style="--v:84%"></span></span><b>84/100</b></div>
+        <div class="barre bas"><span>Sarah</span><span class="piste"><span class="jauge" style="--v:61%"></span></span><b>61/100</b></div>
+      </div>
+      <blockquote class="dialogue">
+        <span class="avatar" aria-hidden="true">L</span>
+        <div class="bulle"><p>« Pourquoi une telle différence ? »</p><cite>Lina, directrice des ressources humaines</cite></div>
+      </blockquote>
+      <p>Tu n'as pas la réponse.</p>
+      <aside class="retenir danger">
+        <strong>À retenir</strong>
+        Une précision élevée ne prouve pas que le modèle est juste. Il peut très bien avoir copié les habitudes injustes du passé.
+      </aside>
+    </section>
+    <nav class="choix" aria-label="Tes choix">
+      <a class="bouton" href="fin-scandale.html">
+        <img class="icone" src="../assets/icons/eclair.svg" alt="">
+        Livrer quand même : 91 %, c'est excellent
+      </a>
+      <a class="bouton secondaire" href="audit.html">
+        <img class="icone" src="../assets/icons/loupe.svg" alt="">
+        Ouvrir le modèle pour comprendre
+      </a>
+    </nav>
+  </main>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Retirer les proxys | Survie contre le Biais</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../theme.js"></script>
+</head>
+<body>
+  <main class="carte">
+    <header>
+      <button class="theme-bouton" type="button" aria-label="Passer en mode nuit">🌙</button>
+      <p class="etape">Étape 7 sur 9</p>
+      <h1>Retirer les proxys</h1>
+      <div class="progression" role="progressbar" aria-label="Progression" aria-valuenow="7" aria-valuemin="0" aria-valuemax="9"><span style="--v:78%"></span></div>
+      <img class="vignette" src="../assets/backgrounds/vignette-filtre.svg" alt="">
+    </header>
+    <section class="scene">
+      <p>Tu retires le genre, le prénom, les hobbies et les trous de CV. Nouveau test :</p>
+      <div class="barres">
+        <div class="barre"><span>Thomas</span><span class="piste"><span class="jauge" style="--v:79%"></span></span><b>79/100</b></div>
+        <div class="barre bas"><span>Sarah</span><span class="piste"><span class="jauge" style="--v:74%"></span></span><b>74/100</b></div>
+      </div>
+      <p>L'écart se réduit nettement. Mais la précision tombe à <strong>84 %</strong>, et Lina n'est pas ravie.</p>
+      <p>Il reste un souci : les données sont toujours déséquilibrées (78 % d'hommes). Le modèle a vu peu d'exemples de candidates retenues.</p>
+    </section>
+    <nav class="choix" aria-label="Tes choix">
+      <a class="bouton" href="equilibrer.html">
+        <img class="icone" src="../assets/icons/balance.svg" alt="">
+        Rééquilibrer le jeu de données
+      </a>
+      <a class="bouton secondaire" href="fin-moyenne.html">
+        <img class="icone" src="../assets/icons/eclair.svg" alt="">
+        Livrer maintenant, c'est déjà bien mieux
+      </a>
+    </nav>
+  </main>
+</body>
+</html>

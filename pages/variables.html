@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Que faire des variables ? | Survie contre le Biais</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../theme.js"></script>
+</head>
+<body>
+  <main class="carte">
+    <header>
+      <button class="theme-bouton" type="button" aria-label="Passer en mode nuit">🌙</button>
+      <p class="etape">Étape 5 sur 9</p>
+      <h1>Que faire des variables ?</h1>
+      <div class="progression" role="progressbar" aria-label="Progression" aria-valuenow="5" aria-valuemin="0" aria-valuemax="9"><span style="--v:56%"></span></div>
+      <img class="vignette" src="../assets/backgrounds/vignette-curseurs.svg" alt="">
+    </header>
+    <section class="scene">
+      <p>Tu peux choisir quelles colonnes l'IA a le droit de voir. Trois options :</p>
+      <ul>
+        <li><strong>A.</strong> Retirer seulement la colonne « genre ».</li>
+        <li><strong>B.</strong> Retirer le genre, mais aussi le prénom, les hobbies et les trous de CV.</li>
+        <li><strong>C.</strong> Tout garder et ajouter une note « attention aux biais » dans la documentation.</li>
+      </ul>
+    </section>
+    <nav class="choix" aria-label="Tes choix">
+      <a class="bouton" href="genre-seul.html">
+        <img class="icone" src="../assets/icons/filtre.svg" alt="">
+        Option A : retirer le genre
+      </a>
+      <a class="bouton" href="proxys.html">
+        <img class="icone" src="../assets/icons/filtre.svg" alt="">
+        Option B : retirer le genre et les indices indirects
+      </a>
+      <a class="bouton secondaire" href="fin-scandale.html">
+        <img class="icone" src="../assets/icons/fleche.svg" alt="">
+        Option C : tout garder
+      </a>
+    </nav>
+  </main>
+</body>
+</html>

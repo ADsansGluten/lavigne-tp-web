@@ -1,0 +1,307 @@
+/* =====================================================
+   style.css : le seul fichier de style du jeu.
+   Toutes les pages le chargent avec :
+   <link rel="stylesheet" href="style.css">   (index.html)
+   <link rel="stylesheet" href="../style.css"> (dossier pages/)
+   Modifie les couleurs ci-dessous et tout le site change !
+   ===================================================== */
+
+/* 1. Les couleurs du MODE JOUR (variables) */
+:root {
+  --fond: #e6ebf2;          /* fond de la page */
+  --papier: #fbfcfe;        /* fond de la carte centrale */
+  --encre: #15213b;         /* couleur du texte */
+  --encre-douce: #4a5671;   /* texte secondaire */
+  --accent: #2c5bff;        /* bordure du haut de la carte */
+  --bouton: #2c5bff;        /* boutons principaux */
+  --bouton-survol: #1c44d6; /* boutons principaux au survol */
+  --lien: #2c5bff;          /* texte et contour des boutons secondaires */
+  --alerte: #d62f6b;        /* biais, danger */
+  --ok: #1d8a5a;            /* bonne fin */
+  --ambre: #b87800;         /* fin moyenne */
+  --bloc: #eef2f8;          /* bandeau du titre, tableau, scores */
+  --ligne: #d5dce8;         /* petites bordures */
+  --bloc-info: #eef2ff;     /* bloc "À retenir" */
+  --bloc-alerte: #fff0f5;   /* bloc "À retenir" rouge */
+  --rayon: 10px;            /* arrondi des coins */
+}
+
+/* 2. Les couleurs du MODE NUIT
+   Quand theme.js ajoute data-theme="dark" sur la page, ces valeurs
+   remplacent celles du dessus. Le reste du CSS ne change pas. */
+[data-theme="dark"] {
+  color-scheme: dark;       /* barres de défilement sombres */
+  --fond: #0f1420;
+  --papier: #171e2e;
+  --encre: #e8ecf5;
+  --encre-douce: #9aa6c0;
+  --accent: #4d78ff;
+  --bouton: #3d68f5;
+  --bouton-survol: #5a82ff;
+  --lien: #8fa8ff;
+  --alerte: #ff5c8a;
+  --ok: #2fb67c;
+  --ambre: #e0a526;
+  --bloc: #1f2840;
+  --ligne: #2c3650;
+  --bloc-info: #1c2644;
+  --bloc-alerte: #2e1a28;
+}
+
+/* 3. Réglages de base pour toute la page */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 24px 16px;
+  background-color: var(--fond);
+  background-image: url("assets/backgrounds/points-bleus.svg"); /* motif par défaut */
+  color: var(--encre);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Changement de couleur en douceur (sauf si l'animation est désactivée) */
+@media (prefers-reduced-motion: no-preference) {
+  body, .carte, .theme-bouton { transition: background-color 0.2s, color 0.2s, border-color 0.2s; }
+  .bouton { transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.15s; }
+  .bouton:hover { transform: translateX(3px); }   /* le bouton glisse un peu au survol */
+
+  /* Apparition en douceur : la carte puis chaque bloc de la scène */
+  .carte { animation: monter 0.5s ease both; }
+  .scene > * { animation: monter 0.5s ease both; }
+  .scene > *:nth-child(2) { animation-delay: 0.08s; }
+  .scene > *:nth-child(3) { animation-delay: 0.16s; }
+  .scene > *:nth-child(4) { animation-delay: 0.24s; }
+  .jauge { animation: remplir 1s 0.35s ease both; } /* les jauges se remplissent */
+
+  @keyframes monter  { from { opacity: 0; transform: translateY(12px); } }
+  @keyframes remplir { from { width: 0; } }
+}
+
+/* 4. La carte centrale qui contient chaque page */
+.carte {
+  position: relative;        /* sert à placer le bouton jour/nuit */
+  overflow: hidden;          /* arrondit aussi le bandeau du titre */
+  max-width: 640px;          /* largeur maximum du texte */
+  margin: 0 auto;            /* centre la carte */
+  background: var(--papier);
+  color: var(--encre);       /* texte toujours lisible, jour ou nuit */
+  padding: 32px 28px;
+  border-radius: var(--rayon);
+  border-top: 6px solid var(--accent);
+}
+
+/* La bordure du haut change de couleur selon la page */
+body.danger .carte { border-top-color: var(--alerte); }
+body.reussite .carte { border-top-color: var(--ok); }
+body.mitige .carte { border-top-color: var(--ambre); }
+
+/* 5. Les ambiances : un motif de fond par type de scène.
+   Le même motif apparaît derrière la page ET dans le bandeau du titre. */
+.carte > header {
+  position: relative;        /* sert à placer la vignette */
+  min-height: 150px;
+  margin: -32px -28px 24px;  /* le bandeau occupe toute la largeur de la carte */
+  padding: 24px 28px 20px;
+  background-color: var(--bloc);
+  background-image: url("assets/backgrounds/points-bleus.svg");
+}
+body.accueil, body.accueil .carte > header { background-image: url("assets/backgrounds/grille.svg"); }
+body.danger, body.danger .carte > header { background-image: url("assets/backgrounds/rayures-rose.svg"); }
+body.reussite, body.reussite .carte > header { background-image: url("assets/backgrounds/cercles-verts.svg"); }
+body.mitige, body.mitige .carte > header { background-image: url("assets/backgrounds/points-ambre.svg"); }
+
+/* 6. Le bouton jour / nuit (en haut à droite de la carte) */
+.theme-bouton {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;        /* cercle */
+  border: 1px solid var(--ligne);
+  background: var(--papier);
+  color: var(--encre);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.theme-bouton:hover { border-color: var(--accent); }
+.theme-bouton:focus-visible { outline: 3px solid var(--encre); outline-offset: 2px; }
+
+/* 7. La barre de progression et la vignette du bandeau */
+.progression {
+  height: 6px;
+  margin: 14px 104px 0 0;    /* s'arrête avant la vignette */
+  border-radius: 99px;
+  background: var(--ligne);
+  overflow: hidden;
+}
+.progression span {
+  display: block;
+  height: 100%;
+  width: var(--v);           /* la largeur vient de style="--v:33%" dans le HTML */
+  background: var(--accent);
+  border-radius: 99px;
+}
+.vignette {
+  position: absolute;
+  right: 20px;
+  bottom: 12px;
+  width: 84px;
+  height: auto;
+}
+
+/* 8. Les textes */
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.2rem;
+  line-height: 1.2;
+  margin: 6px 0 0;
+  padding-right: 100px;      /* laisse la place à la vignette */
+  text-wrap: balance;        /* coupe les titres de façon équilibrée */
+}
+
+.etape {
+  margin: 0;
+  color: var(--encre-douce);
+  font-size: 0.9rem;
+}
+
+p { margin: 0 0 16px; }
+
+ul { padding-left: 20px; margin: 0 0 16px; }
+li { margin-bottom: 8px; }
+
+/* 9. Le tableau de données (page "donnees") */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+th, td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--ligne);
+}
+th { background: var(--bloc); }
+
+/* 10. Le bloc "À retenir" */
+.retenir {
+  background: var(--bloc-info);
+  border-left: 5px solid var(--accent);
+  padding: 14px 16px;
+  margin: 24px 0;
+  border-radius: 0 var(--rayon) var(--rayon) 0;
+}
+.retenir strong { display: block; margin-bottom: 4px; }
+
+/* Variante rouge pour les avertissements */
+.retenir.danger {
+  background: var(--bloc-alerte);
+  border-left-color: var(--alerte);
+}
+
+/* 11. Les scores en jauges (la barre se remplit) */
+.barres { display: grid; gap: 10px; margin: 0 0 20px; }
+.barre {
+  display: grid;
+  grid-template-columns: 64px 1fr 56px;   /* nom | barre | score */
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+.piste { height: 14px; border-radius: 99px; background: var(--ligne); overflow: hidden; }
+.jauge {
+  display: block;
+  height: 100%;
+  width: var(--v);           /* ex : style="--v:84%" */
+  border-radius: 99px;
+  background: var(--accent);
+}
+.barre.bas .jauge { background: var(--alerte); }   /* score nettement plus bas */
+.barre b { text-align: right; }
+
+/* 12. Les bulles de dialogue */
+.dialogue { display: flex; gap: 12px; align-items: flex-start; margin: 0 0 16px; }
+.avatar {
+  flex: none;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;       /* centre la lettre */
+  border-radius: 50%;
+  background: var(--bouton);
+  color: #fff;
+  font-weight: 700;
+}
+.bulle { background: var(--bloc); border-radius: 4px 14px 14px 14px; padding: 10px 14px; }
+.bulle p { margin: 0; }
+.bulle cite { display: block; margin-top: 2px; font-size: 0.8rem; font-style: normal; color: var(--encre-douce); }
+
+/* 13. Les boutons de choix (icône + texte) */
+.choix {
+  display: flex;
+  flex-direction: column;  /* un bouton par ligne */
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.bouton {
+  display: flex;
+  align-items: center;     /* icône et texte alignés au centre */
+  gap: 12px;
+  padding: 12px 18px;
+  background: var(--bouton);
+  color: #fff;
+  text-decoration: none;   /* enlève le soulignement */
+  border-radius: var(--rayon);
+  font-weight: 600;
+}
+.bouton::after { content: "\2192"; margin-left: auto; opacity: 0.85; }   /* flèche à droite */
+
+/* L'icône : un trait bleu dans une pastille blanche (visible partout) */
+.icone {
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+  background: #fff;
+  border-radius: 50%;
+  flex: none;              /* l'icône ne se rétrécit pas */
+}
+
+/* Survol de la souris + navigation au clavier */
+.bouton:hover { background: var(--bouton-survol); }
+.bouton:focus-visible { outline: 3px solid var(--encre); outline-offset: 2px; }
+
+/* Bouton secondaire : contour seulement */
+.bouton.secondaire {
+  background: transparent;
+  color: var(--lien);
+  border: 2px solid var(--lien);
+  padding: 10px 16px;      /* compense la bordure de 2px */
+}
+.bouton.secondaire:hover { background: var(--bloc-info); }
+
+/* 14. Les étoiles de fin */
+.etoiles {
+  font-size: 1.6rem;
+  letter-spacing: 4px;
+  margin: 0 0 16px;
+}
+
+/* 15. Lexique */
+dt { font-weight: 700; margin-top: 16px; }
+dd { margin: 4px 0 0; color: var(--encre-douce); }
+
+/* 16. Petits écrans (téléphone) */
+@media (max-width: 480px) {
+  .carte { padding: 24px 18px; }
+  .carte > header { margin: -24px -18px 20px; padding: 20px 18px 16px; min-height: 128px; }
+  h1 { font-size: 1.6rem; padding-right: 76px; }
+  .vignette { width: 64px; right: 14px; }
+  .progression { margin-right: 80px; }
+}

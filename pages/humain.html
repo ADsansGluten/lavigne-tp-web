@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qui a le dernier mot ? | Survie contre le Biais</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../theme.js"></script>
+</head>
+<body>
+  <main class="carte">
+    <header>
+      <button class="theme-bouton" type="button" aria-label="Passer en mode nuit">🌙</button>
+      <p class="etape">Étape 9 sur 9</p>
+      <h1>Qui a le dernier mot ?</h1>
+      <div class="progression" role="progressbar" aria-label="Progression" aria-valuenow="9" aria-valuemin="0" aria-valuemax="9"><span style="--v:100%"></span></div>
+      <img class="vignette" src="../assets/backgrounds/vignette-humain.svg" alt="">
+    </header>
+    <section class="scene">
+      <p>Le modèle est prêt. Reste une question de fonctionnement :</p>
+      <ul>
+        <li><strong>A.</strong> L'IA décide seule, c'est le plus rapide.</li>
+        <li><strong>B.</strong> L'IA propose un score, un recruteur humain valide les cas limites, et tu refais un audit tous les 6 mois.</li>
+        <li><strong>C.</strong> L'IA décide seule, sauf quand elle est peu sûre d'elle. Pas d'audit ensuite.</li>
+      </ul>
+    </section>
+    <nav class="choix" aria-label="Tes choix">
+      <a class="bouton" href="fin-bonne.html">
+        <img class="icone" src="../assets/icons/bouclier.svg" alt="">
+        Option B : supervision humaine et audits
+      </a>
+      <a class="bouton secondaire" href="fin-scandale.html">
+        <img class="icone" src="../assets/icons/eclair.svg" alt="">
+        Option A : automatiser à 100 %
+      </a>
+      <a class="bouton secondaire" href="fin-moyenne.html">
+        <img class="icone" src="../assets/icons/utilisateur.svg" alt="">
+        Option C : humain seulement si l'IA hésite
+      </a>
+    </nav>
+  </main>
+</body>
+</html>

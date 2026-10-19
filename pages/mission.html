@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ta mission | Survie contre le Biais</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../theme.js"></script>
+</head>
+<body>
+  <main class="carte">
+    <header>
+      <button class="theme-bouton" type="button" aria-label="Passer en mode nuit">🌙</button>
+      <p class="etape">Étape 1 sur 9</p>
+      <h1>Ta mission</h1>
+      <div class="progression" role="progressbar" aria-label="Progression" aria-valuenow="1" aria-valuemin="0" aria-valuemax="9"><span style="--v:11%"></span></div>
+      <img class="vignette" src="../assets/backgrounds/vignette-dossier.svg" alt="">
+    </header>
+    <section class="scene">
+      <p>Lina, la directrice des ressources humaines, t'explique le projet : l'entreprise reçoit trop de CV pour le poste d'ingénieur. Elle veut une IA qui les note de 0 à 100.</p>
+      <p>Livraison dans une semaine. Pour l'entraîner, tu disposes de <strong>10 ans d'historique</strong> : 5 000 CV, avec la décision prise à l'époque (embauché ou refusé).</p>
+      <blockquote class="dialogue">
+        <span class="avatar" aria-hidden="true">L</span>
+        <div class="bulle"><p>« Je reçois plus de 300 CV par semaine pour un seul poste. J'ai besoin d'aide, vite. »</p><cite>Lina, directrice des ressources humaines</cite></div>
+      </blockquote>
+      <aside class="retenir">
+        <strong>À retenir</strong>
+        Une IA n'invente rien : elle apprend à imiter les exemples qu'on lui montre.
+      </aside>
+      <p>Lina te laisse libre sur la méthode. Comment commences-tu ?</p>
+    </section>
+    <nav class="choix" aria-label="Tes choix">
+      <a class="bouton" href="donnees.html">
+        <img class="icone" src="../assets/icons/tableau.svg" alt="">
+        Foncer et ouvrir le jeu de données
+      </a>
+      <a class="bouton secondaire" href="audit.html">
+        <img class="icone" src="../assets/icons/loupe.svg" alt="">
+        Creuser d'abord avec Lina ce qu'est un « bon candidat »
+      </a>
+    </nav>
+  </main>
+</body>
+</html>

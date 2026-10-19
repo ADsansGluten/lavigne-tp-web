@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rééquilibrer les données | Survie contre le Biais</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="../theme.js"></script>
+</head>
+<body class="reussite">
+  <main class="carte">
+    <header>
+      <button class="theme-bouton" type="button" aria-label="Passer en mode nuit">🌙</button>
+      <p class="etape">Étape 8 sur 9</p>
+      <h1>Rééquilibrer les données</h1>
+      <div class="progression" role="progressbar" aria-label="Progression" aria-valuenow="8" aria-valuemin="0" aria-valuemax="9"><span style="--v:89%"></span></div>
+      <img class="vignette" src="../assets/backgrounds/vignette-balance.svg" alt="">
+    </header>
+    <section class="scene">
+      <p>Tu donnes plus de poids aux exemples de candidates retenues, pour que l'IA les apprenne aussi bien que les autres. Résultat :</p>
+      <div class="barres">
+        <div class="barre"><span>Thomas</span><span class="piste"><span class="jauge" style="--v:78%"></span></span><b>78/100</b></div>
+        <div class="barre"><span>Sarah</span><span class="piste"><span class="jauge" style="--v:78%"></span></span><b>78/100</b></div>
+      </div>
+      <p>Les deux CV obtiennent le même score. La précision globale est de <strong>87 %</strong>.</p>
+      <aside class="retenir">
+        <strong>À retenir</strong>
+        Il n'existe pas de modèle parfait : tu as accepté de perdre un peu de précision pour gagner en équité. C'est un <strong>arbitrage</strong>.
+      </aside>
+      <blockquote class="dialogue">
+        <span class="avatar" aria-hidden="true">L</span>
+        <div class="bulle"><p>« On est à quelques jours de la date limite. À toi de décider. »</p><cite>Lina, directrice des ressources humaines</cite></div>
+      </blockquote>
+      <p>Dernière décision avant la mise en service : tester ou non en conditions réelles ?</p>
+    </section>
+    <nav class="choix" aria-label="Tes choix">
+      <a class="bouton" href="humain.html">
+        <img class="icone" src="../assets/icons/fiole.svg" alt="">
+        Lancer un test pilote d'un mois avec quelques recruteurs
+      </a>
+      <a class="bouton secondaire" href="fin-moyenne.html">
+        <img class="icone" src="../assets/icons/eclair.svg" alt="">
+        Livrer tout de suite, la date limite approche
+      </a>
+    </nav>
+  </main>
+</body>
+</html>
